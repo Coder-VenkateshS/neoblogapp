@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@page import="model.Blog"%>
+    <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,15 +21,19 @@
 	
 	<!-- Display part -->
 	
-	<td><c:out value="${id}"></c:out></td> 
+	
 	 
-	 <a href="<%=request.getContextPath()%>/getallblog">Get all blogs</a>
-<c:forEach items="${bloglist}" var="blogs">  
-  <tr> 
-    <td><c:out value="${blogs.getBlogId()}"></c:out></td> 
-    <td><c:out value="${blogs.getBlogTitle()}"></c:out></td> 
-  
-</c:forEach>
-     
+<a href="<%=request.getContextPath()%>/getallblog">Get all blogs</a>
+
+     <%ArrayList<Blog> bloglist = (ArrayList<Blog>)request.getAttribute("bloglist");
+        for(Blog blog:bloglist){%>
+        <%-- Arranging data in tabular form
+        --%>
+           <ul>
+                <li><%=blog.getBlogId()%></li>
+                <li><%=blog.getBlogTitle()%></li>
+                <li><%=blog.getBlogDescription()%></li>
+            </ul>
+            <%}%>
 </body>
 </html>

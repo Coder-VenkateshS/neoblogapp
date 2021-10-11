@@ -35,7 +35,7 @@ public class GetAllBlogController extends HttpServlet {
 			
 		}
 		request.setAttribute("bloglist", bloglist);
-		request.setAttribute("id", blog.getBlogId());
+//		request.setAttribute("id", blog.getBlogId());
 		RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
 		rd.forward(request, response);
 	}
